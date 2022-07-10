@@ -3,22 +3,40 @@
     ===== Código de TypeScript =====
 */
 
-let habilidades: string[] = ['Bash', 'Counter', 'Headling'];
+function sumar(a:number, b:number):number{
+    return a + b;
+}
 
-interface Personaje {
+
+const sumarFlecha = (a:number, b:number):number => a + b;
+
+function multiplicacion (numero:number, otroNumero?:number, base:number = 2){
+    return numero * base;
+}
+
+interface PersonajeLOR {
     nombre: string;
-    hp: number;
-    habilidades: string[];
-    puebloNatal?: string;
+    pv: number;
+    mostrarHp: (/*a:number, b: string, c:boolean*/) => void;
 }
 
-const personaje: Personaje = {
+function curar( personaje: PersonajeLOR, curarX:number ): void {
+
+    personaje.pv += curarX;
+    //console.log(personaje);
+    
+}
+
+const nuevoPersonaje: PersonajeLOR = {
     nombre: 'Strider',
-    hp: 100,
-    habilidades: ['Bash', 'Counter', 'Headling']
+    pv: 50,
+    mostrarHp(){
+        console.log('Puntos de vida:', this.pv);    
+    }
 }
 
-personaje.puebloNatal = 'Pueblo Paleta';
+curar(nuevoPersonaje, 20 );
+nuevoPersonaje.mostrarHp();
 
-console.table( personaje );
+
 
